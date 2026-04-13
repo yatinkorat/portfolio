@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yatin Korat – Software Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --blue:#2563eb;--blue2:#1d4ed8;--blue-light:#eff6ff;--blue-mid:#dbeafe;--blue-border:#bfdbfe;
+  --purple:#7c3aed;--purple-light:#f5f3ff;--purple-mid:#ede9fe;
+  --dark:#0f172a;--dark2:#1e293b;--body:#334155;--muted:#64748b;
+  --border:#e2e8f0;--border2:#f1f5f9;--white:#ffffff;--bg:#f8fafc;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--body);overflow-x:hidden;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:#f1f5f9;}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--blue),var(--purple));border-radius:3px;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:66px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 4rem;
+  background:rgba(255,255,255,0.9);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow 0.3s;
+}
+nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.08);}
+.nav-left{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-avatar{
+  width:38px;height:38px;border-radius:11px;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-weight:800;font-size:0.9rem;
+  box-shadow:0 4px 12px rgba(37,99,235,0.3);
+}
+.nav-name{font-size:0.95rem;font-weight:700;color:var(--dark);}
+.nav-title{font-size:0.75rem;color:var(--muted);font-weight:400;}
+.nav-links{display:flex;gap:2px;list-style:none;}
+.nav-links a{
+  color:var(--muted);font-size:0.85rem;font-weight:500;
+  padding:7px 15px;border-radius:9px;text-decoration:none;transition:all 0.2s;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--blue);background:var(--blue-light);}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:80px 4rem 60px;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#ffffff 0%,#f0f7ff 40%,#f5f0ff 100%);
+}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;}
+.blob1{width:600px;height:600px;background:rgba(37,99,235,0.07);top:-200px;right:-100px;}
+.blob2{width:400px;height:400px;background:rgba(124,58,237,0.06);bottom:-100px;left:-80px;}
+.blob3{width:250px;height:250px;background:rgba(59,130,246,0.08);top:30%;left:40%;}
+.hero-inner{max-width:960px;margin:0 auto;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:white;border:1px solid var(--blue-border);
+  color:var(--blue);font-size:0.76rem;font-weight:600;
+  padding:6px 14px;border-radius:20px;margin-bottom:1.8rem;
+  box-shadow:0 2px 12px rgba(37,99,235,0.1);
+  animation:fadeUp 0.5s ease both;
+}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 6px #10b981;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.4);opacity:0.6;}}
+.hero h1{font-size:clamp(2.6rem,5vw,4rem);font-weight:900;line-height:1.1;margin-bottom:0.5rem;color:var(--dark);animation:fadeUp 0.5s 0.1s ease both;}
+.hero h1 .gradient-text{background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-role{font-size:1.15rem;font-weight:500;color:var(--muted);margin-bottom:1.4rem;animation:fadeUp 0.5s 0.15s ease both;}
+.hero-desc{font-size:1rem;color:var(--body);line-height:1.85;max-width:520px;margin-bottom:2.2rem;animation:fadeUp 0.5s 0.2s ease both;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2.5rem;animation:fadeUp 0.5s 0.25s ease both;}
+.chip{background:white;border:1px solid var(--border);color:var(--dark2);font-size:0.76rem;font-weight:500;padding:5px 13px;border-radius:20px;box-shadow:0 1px 4px rgba(0,0,0,0.05);transition:all 0.2s;}
+.chip:hover{border-color:var(--blue-border);color:var(--blue);background:var(--blue-light);}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp 0.5s 0.3s ease both;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--blue),var(--purple));color:white;font-size:0.88rem;font-weight:600;padding:13px 26px;border-radius:12px;text-decoration:none;box-shadow:0 6px 20px rgba(37,99,235,0.3);transition:all 0.25s;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,99,235,0.4);}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--dark);font-size:0.88rem;font-weight:600;padding:13px 26px;border-radius:12px;text-decoration:none;border:1.5px solid var(--border);transition:all 0.25s;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.btn-ghost:hover{border-color:var(--blue-border);color:var(--blue);transform:translateY(-2px);}
+
+/* STATS CARD */
+.hero-right{animation:fadeUp 0.6s 0.3s ease both;}
+.stats-card{background:white;border:1px solid var(--border);border-radius:22px;padding:2rem;box-shadow:0 20px 60px rgba(0,0,0,0.08);min-width:240px;}
+.stat-item{padding:1rem 0;border-bottom:1px solid var(--border2);}
+.stat-item:last-child{border-bottom:none;padding-bottom:0;}
+.stat-item:first-child{padding-top:0;}
+.stat-num{font-size:1.8rem;font-weight:900;color:var(--dark);line-height:1;}
+.stat-num span{background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-label{font-size:0.78rem;color:var(--muted);font-weight:500;margin-top:3px;}
+.contact-row{display:flex;flex-direction:column;gap:8px;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border2);}
+.contact-item{display:flex;align-items:center;gap:9px;font-size:0.78rem;color:var(--muted);font-weight:500;}
+.c-icon{width:26px;height:26px;border-radius:7px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+
+/* SECTIONS */
+.section{padding:90px 4rem;position:relative;}
+.section:nth-child(even){background:var(--bg);}
+.section-inner{max-width:960px;margin:0 auto;}
+.section-tag{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.7rem;}
+.tag-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);}
+.section h2{font-size:2rem;font-weight:800;color:var(--dark);margin-bottom:2.8rem;}
+
+/* BIO */
+.bio-wrap{background:linear-gradient(135deg,var(--blue-light),var(--purple-light));border:1px solid var(--blue-border);border-radius:20px;padding:2.4rem 2.8rem;margin-bottom:3rem;font-size:0.97rem;color:var(--body);line-height:1.95;position:relative;overflow:hidden;}
+.bio-wrap::before{content:'"';position:absolute;top:-20px;left:20px;font-size:8rem;font-weight:900;color:rgba(37,99,235,0.08);line-height:1;font-family:Georgia,serif;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
+.skill-card{background:white;border:1.5px solid var(--border);border-radius:16px;padding:1.4rem 1.6rem;transition:all 0.3s;position:relative;overflow:hidden;}
+.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--purple));transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+.skill-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(37,99,235,0.1);border-color:var(--blue-border);}
+.skill-card:hover::before{transform:scaleX(1);}
+.skill-icon{font-size:1.4rem;margin-bottom:0.8rem;}
+.skill-card h4{font-size:0.72rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem;}
+.skill-card p{font-size:0.84rem;color:var(--body);line-height:1.7;}
+
+/* RESUME - LIGHT THEME */
+.resume-light{border:1.5px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.07);}
+.resume-light-bar{background:white;border-bottom:1.5px solid var(--border);padding:1.1rem 1.8rem;display:flex;align-items:center;justify-content:space-between;}
+.resume-light-left{display:flex;align-items:center;gap:14px;}
+.resume-light-icon{width:42px;height:42px;border-radius:10px;background:var(--blue-light);border:1px solid var(--blue-border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.resume-light-name{font-size:0.9rem;font-weight:700;color:var(--dark);}
+.resume-light-sub{font-size:0.74rem;color:var(--muted);margin-top:2px;}
+.resume-dl-btn{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--blue),var(--purple));color:white;font-size:0.8rem;font-weight:600;padding:9px 20px;border-radius:10px;text-decoration:none;box-shadow:0 4px 14px rgba(37,99,235,0.25);transition:all 0.2s;}
+.resume-dl-btn:hover{opacity:0.88;transform:translateY(-1px);}
+.resume-frame{background:var(--bg);padding:1.5rem;}
+.resume-frame iframe{border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,0.08);}
+
+/* PROJECTS */
+.projects-grid{display:grid;gap:1.4rem;}
+.project-card{background:white;border:1.5px solid var(--border);border-radius:20px;padding:2.2rem 2.4rem;transition:all 0.3s;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;}
+.project-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,var(--blue),var(--purple));transform:scaleY(0);transform-origin:top;transition:transform 0.35s;}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 16px 44px rgba(37,99,235,0.1);border-color:var(--blue-border);}
+.project-card:hover::after{transform:scaleY(1);}
+.project-badge{background:var(--purple-light);border:1px solid var(--purple-mid);color:var(--purple);font-size:0.68rem;font-weight:700;padding:5px 13px;border-radius:20px;white-space:nowrap;height:fit-content;}
+.project-card h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:0.6rem;}
+.project-card p{font-size:0.9rem;color:var(--body);line-height:1.8;margin-bottom:1.2rem;}
+.tech-row{display:flex;flex-wrap:wrap;gap:7px;}
+.tech-tag{background:var(--blue-light);color:var(--blue);font-size:0.74rem;font-weight:600;padding:4px 12px;border-radius:20px;border:1px solid var(--blue-border);}
+
+/* EXPERIENCE */
+.exp-cards{display:grid;gap:1.2rem;}
+.exp-card{background:white;border:1.5px solid var(--border);border-radius:18px;padding:1.8rem 2.2rem;transition:all 0.3s;}
+.exp-card:hover{box-shadow:0 10px 30px rgba(0,0,0,0.07);border-color:var(--blue-border);}
+.exp-head{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:0.4rem;}
+.exp-head h3{font-size:1rem;font-weight:700;color:var(--dark);}
+.exp-date{font-size:0.75rem;font-weight:600;color:var(--purple);background:var(--purple-light);border:1px solid var(--purple-mid);padding:4px 12px;border-radius:20px;}
+.exp-co{font-size:0.87rem;color:var(--blue);font-weight:600;margin-bottom:0.9rem;}
+.exp-card ul{padding-left:1.2rem;}
+.exp-card ul li{font-size:0.86rem;color:var(--body);line-height:1.85;margin-bottom:3px;}
+
+/* EDUCATION */
+.edu-timeline{position:relative;padding-left:2.5rem;}
+.edu-timeline::before{content:'';position:absolute;left:9px;top:14px;bottom:14px;width:2px;background:linear-gradient(to bottom,var(--blue),var(--purple));border-radius:2px;}
+.edu-item{position:relative;margin-bottom:1.6rem;}
+.edu-node{position:absolute;left:-2.5rem;top:18px;width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));border:3px solid white;box-shadow:0 0 0 3px var(--blue-mid),0 4px 12px rgba(37,99,235,0.3);}
+.edu-card{background:white;border:1.5px solid var(--border);border-radius:16px;padding:1.6rem 2rem;transition:all 0.3s;}
+.edu-card:hover{box-shadow:0 8px 24px rgba(37,99,235,0.08);border-color:var(--blue-border);}
+.edu-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:0.25rem;}
+.edu-school{font-size:0.87rem;color:var(--blue);font-weight:600;margin-bottom:0.2rem;}
+.edu-years{font-size:0.79rem;color:var(--muted);margin-bottom:0.9rem;}
+.edu-card ul{padding-left:1.1rem;}
+.edu-card ul li{font-size:0.84rem;color:var(--body);line-height:1.75;margin-bottom:3px;}
+
+/* DOCS */
+.docs-box{background:linear-gradient(135deg,var(--blue-light),var(--purple-light));border:2px dashed var(--blue-border);border-radius:18px;padding:3rem;margin-top:2rem;text-align:center;}
+.docs-box .icon{font-size:2.5rem;margin-bottom:1rem;}
+.docs-box h4{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:0.4rem;}
+.docs-box p{font-size:0.85rem;color:var(--muted);}
+
+/* FOOTER */
+footer{background:var(--dark);color:#475569;padding:3.5rem 4rem;text-align:center;}
+.footer-logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;color:white;font-weight:900;font-size:1rem;margin:0 auto 1rem;}
+.footer-name{font-size:1rem;font-weight:700;color:white;margin-bottom:0.4rem;}
+.footer-sub{font-size:0.84rem;color:#64748b;line-height:1.9;margin-bottom:1.5rem;}
+.footer-divider{width:40px;height:2px;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:2px;margin:1.5rem auto;}
+.footer-copy{font-size:0.75rem;color:#334155;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;}.hero-right{display:none;}}
+@media(max-width:640px){
+  nav,.hero,.section{padding-left:1.2rem;padding-right:1.2rem;}
+  nav{padding-left:1.2rem;padding-right:1.2rem;}
+  .hero h1{font-size:2rem;}
+  .nav-links{display:none;}
+  footer{padding:2rem 1.2rem;}
+  .project-card{grid-template-columns:1fr;gap:0.8rem;}
+  .project-badge{width:fit-content;}
+  .resume-mobile-msg{display:flex !important;}
+  .resume-frame{display:none;}
+  .transcript-table{font-size:0.78rem;}
+  .transcript-table th,.transcript-table td{padding:0.6rem 0.8rem;}
+  .semester-head{flex-direction:column;align-items:flex-start;gap:0.5rem;}
+  .skills-grid{grid-template-columns:1fr 1fr;}
+  .awards-grid{grid-template-columns:1fr;}
+  .cert-grid{grid-template-columns:1fr;}
+  .hero-chips{gap:6px;}
+  .chip{font-size:0.72rem;padding:4px 10px;}
+  .section h2{font-size:1.6rem;}
+  .bio-wrap{padding:1.4rem 1.6rem;}
+  .resume-light-bar{flex-direction:column;align-items:flex-start;gap:0.8rem;}
+}
+
+/* TRANSCRIPT */
+.transcript-wrap{margin-top:2.5rem;}
+.transcript-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.8rem;flex-wrap:wrap;gap:1rem;}
+.transcript-title{font-size:1.1rem;font-weight:800;color:var(--dark);}
+.transcript-note{font-size:0.78rem;color:var(--muted);background:var(--bg);border:1px solid var(--border);padding:5px 12px;border-radius:20px;}
+.semester-block{background:white;border:1.5px solid var(--border);border-radius:18px;overflow:hidden;margin-bottom:1.4rem;transition:all 0.3s;}
+.semester-block:hover{box-shadow:0 8px 28px rgba(37,99,235,0.08);border-color:var(--blue-border);}
+.semester-head{padding:1.2rem 1.8rem;background:linear-gradient(135deg,var(--blue-light),var(--purple-light));border-bottom:1.5px solid var(--blue-border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;}
+.semester-name{font-size:1rem;font-weight:800;color:var(--dark);}
+.semester-meta{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.semester-gpa{font-size:0.82rem;font-weight:600;color:var(--blue);}
+.semester-status{background:#dcfce7;color:#16a34a;font-size:0.7rem;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid #bbf7d0;letter-spacing:0.05em;}
+.transcript-table{width:100%;border-collapse:collapse;}
+.transcript-table th{font-size:0.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;padding:0.8rem 1.8rem;text-align:left;background:var(--bg);border-bottom:1px solid var(--border);}
+.transcript-table td{padding:0.85rem 1.8rem;font-size:0.86rem;color:var(--body);border-bottom:1px solid var(--border2);}
+.transcript-table tr:last-child td{border-bottom:none;}
+.transcript-table tr:hover td{background:var(--blue-light);}
+.grade-badge{display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;min-width:38px;padding:3px 8px;border-radius:8px;}
+.grade-a{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0;}
+.grade-b{background:#dbeafe;color:#1d4ed8;border:1px solid #bfdbfe;}
+.grade-c{background:#fef9c3;color:#a16207;border:1px solid #fde68a;}
+.grade-p{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;}
+.course-code{font-family:monospace;font-size:0.8rem;color:var(--muted);font-weight:600;}
+
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;}
+.cert-card{background:white;border:1.5px solid var(--border);border-radius:18px;padding:1.6rem 1.8rem;display:flex;align-items:flex-start;gap:1.2rem;transition:all 0.3s;}
+.cert-card:hover{box-shadow:0 8px 28px rgba(37,99,235,0.1);border-color:var(--blue-border);transform:translateY(-3px);}
+.cert-icon{font-size:2rem;flex-shrink:0;}
+.cert-title{font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;}
+.cert-school{font-size:0.82rem;color:var(--blue);font-weight:600;margin-bottom:0.2rem;}
+.cert-year{font-size:0.76rem;color:var(--muted);margin-bottom:0.8rem;}
+.cert-badge{font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:20px;}
+.cert-badge.completed{background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0;}
+.cert-badge.inprogress{background:#fef9c3;color:#a16207;border:1px solid #fde68a;}
+.cert-gpa{font-size:0.78rem;font-weight:700;color:var(--purple);margin-bottom:0.6rem;}
+
+/* DOCS COMPLETE */
+.docs-complete{background:linear-gradient(135deg,#f0fdf4,#eff6ff);border:1.5px solid #bbf7d0;border-radius:18px;padding:1.6rem 2rem;margin-top:2rem;display:flex;align-items:center;gap:1.2rem;}
+.docs-complete-icon{font-size:1.8rem;flex-shrink:0;}
+.docs-complete-title{font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:0.3rem;}
+.docs-complete-sub{font-size:0.83rem;color:var(--muted);line-height:1.6;}
+
+/* GITHUB BAR */
+.github-bar{background:white;border:1.5px solid var(--border);border-radius:16px;padding:1.4rem 1.8rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:2rem;transition:all 0.3s;flex-wrap:wrap;}
+.github-bar:hover{border-color:var(--blue-border);box-shadow:0 8px 24px rgba(37,99,235,0.1);}
+.github-left{display:flex;align-items:center;gap:14px;}
+.github-icon{width:44px;height:44px;border-radius:12px;background:var(--dark);display:flex;align-items:center;justify-content:center;color:white;flex-shrink:0;}
+.github-title{font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:0.2rem;}
+.github-sub{font-size:0.78rem;color:var(--muted);}
+.github-btn{background:linear-gradient(135deg,var(--dark),#374151);color:white;font-size:0.82rem;font-weight:600;padding:10px 22px;border-radius:10px;text-decoration:none;transition:all 0.2s;box-shadow:0 4px 12px rgba(0,0,0,0.15);white-space:nowrap;}
+.github-btn:hover{opacity:0.88;transform:translateY(-1px);}
+
+/* AWARDS */
+.awards-section{margin-bottom:3rem;}
+.awards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;}
+.award-card{
+  background:linear-gradient(135deg,#fffbeb,#fef3c7);
+  border:1.5px solid #fde68a;border-radius:18px;padding:1.8rem 2rem;
+  transition:all 0.3s;position:relative;overflow:hidden;
+}
+.award-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#f59e0b,#d97706);
+}
+.award-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(245,158,11,0.2);}
+.award-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
+.award-icon{font-size:2rem;}
+.award-badge{background:#f59e0b;color:white;font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:20px;}
+.award-title{font-size:1.1rem;font-weight:800;color:#92400e;margin-bottom:0.4rem;}
+.award-school{font-size:0.78rem;color:#a16207;font-weight:600;margin-bottom:0.6rem;line-height:1.5;}
+.award-desc{font-size:0.83rem;color:#78350f;line-height:1.7;margin-bottom:1.2rem;}
+.award-link{
+  display:inline-flex;align-items:center;gap:6px;
+  background:#f59e0b;color:white;font-size:0.78rem;font-weight:700;
+  padding:7px 16px;border-radius:9px;text-decoration:none;
+  transition:all 0.2s;box-shadow:0 3px 10px rgba(245,158,11,0.3);
+}
+.award-link:hover{background:#d97706;transform:translateY(-1px);}
+.repo-link{display:inline-flex;align-items:center;gap:7px;margin-top:1rem;background:var(--dark);color:white;font-size:0.78rem;font-weight:600;padding:8px 16px;border-radius:9px;text-decoration:none;transition:all 0.2s;box-shadow:0 3px 10px rgba(0,0,0,0.15);}
+.repo-link:hover{opacity:0.85;transform:translateY(-1px);}</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-left" href="#home">
+    <div class="nav-avatar">YK</div>
+    <div>
+      <div class="nav-name">Yatin Korat</div>
+      <div class="nav-title">Software Developer</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#work-samples">Work Samples</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-blob blob3"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge"><span class="live-dot"></span> Open to Opportunities</div>
+      <h1>Hi, I'm <span class="gradient-text">Yatin Korat</span></h1>
+      <div class="hero-role">Software Developer &amp; CS Student at George Brown College</div>
+      <p class="hero-desc">1+ year of professional experience building full-stack applications, RESTful APIs, and scalable database systems. Passionate about clean, maintainable code.</p>
+      <div class="hero-chips">
+        <span class="chip">C# &amp; Java</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">MySQL &amp; PostgreSQL</span>
+        <span class="chip">REST APIs</span>
+        <span class="chip">ASP.NET Core</span>
+        <span class="chip">Agile</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#work-samples" class="btn-primary">View My Work ↓</a>
+        <a href="assets/Yatin_Korat_Resume.pdf" target="_blank" class="btn-ghost">Download Resume ↗</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stats-card">
+        <div class="stat-item">
+          <div class="stat-num"><span>1+</span></div>
+          <div class="stat-label">Year Professional Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span>2</span></div>
+          <div class="stat-label">Full-Stack Projects Built</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num"><span>6+</span></div>
+          <div class="stat-label">Programming Languages</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-item"><div class="c-icon">📍</div>North York, Ontario</div>
+          <div class="contact-item"><div class="c-icon">✉️</div>yatin.korat@georgebrown.ca</div>
+          <div class="contact-item"><div class="c-icon">📞</div>(289) 890-2804</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="profile">
+  <div class="section-inner">
+    <div class="section-tag reveal"><span class="tag-dot"></span> About Me</div>
+    <h2 class="reveal">Profile</h2>
+    <div class="bio-wrap reveal">
+      I'm a software developer and Computer Programming &amp; Analysis student at George Brown College in Toronto, currently in my second year of a three-year diploma program.<br><br>
+      I bring over a year of hands-on professional experience as a Software Developer at InfoSoft Solutions, where I built and maintained web applications, designed RESTful APIs, and optimized database performance in a real Agile team environment.<br><br>
+      I enjoy building full-stack applications that are secure, efficient, and user-friendly. I'm passionate about writing clean, maintainable code and continuously growing as a developer. I'm actively seeking opportunities to apply my skills in a professional software engineering environment.
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal"><div class="skill-icon">💻</div><h4>Languages</h4><p>C, C++, Java, Python, JavaScript, C#</p></div>
+      <div class="skill-card reveal"><div class="skill-icon">🌐</div><h4>Web Development</h4><p>HTML5, CSS3, Node.js, Express, ASP.NET Core, PHP</p></div>
+      <div class="skill-card reveal"><div class="skill-icon">🗄️</div><h4>Databases</h4><p>MySQL, PostgreSQL, SQL (DDL, DML)</p></div>
+      <div class="skill-card reveal"><div class="skill-icon">🛠️</div><h4>Tools</h4><p>Git, GitHub, VS Code, Visual Studio, Postman, GitHub Copilot</p></div>
+      <div class="skill-card reveal"><div class="skill-icon">⚙️</div><h4>Concepts</h4><p>Agile, SDLC, REST APIs, Debugging, Unit Testing</p></div>
+      <div class="skill-card reveal"><div class="skill-icon">🔧</div><h4>Other</h4><p>ServiceNow (basic), GitHub Copilot, Postman</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="resume">
+  <div class="section-inner">
+    <div class="section-tag reveal"><span class="tag-dot"></span> Skills &amp; Experience</div>
+    <h2 class="reveal">Resume</h2>
+    <div class="resume-light reveal">
+      <div class="resume-light-bar">
+        <div class="resume-light-left">
+          <div class="resume-light-icon">📄</div>
+          <div>
+            <div class="resume-light-name">Yatin_Korat_Resume.pdf</div>
+            <div class="resume-light-sub">Computer Programming &amp; Analysis · George Brown College</div>
+          </div>
+        </div>
+        <a class="resume-dl-btn" href="assets/Yatin_Korat_Resume.pdf" download>⬇ Download PDF</a>
+      </div>
+      <div class="resume-mobile-msg" style="display:none;padding:2rem;text-align:center;background:var(--bg);border-top:1px solid var(--border);">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">📄</div>
+        <div style="font-size:0.9rem;font-weight:600;color:var(--dark);margin-bottom:0.5rem;">Resume not supported on mobile</div>
+        <div style="font-size:0.82rem;color:var(--muted);margin-bottom:1.2rem;">Click the button below to download and view</div>
+        <a href="assets/Yatin_Korat_Resume.pdf" target="_blank" class="resume-dl-btn">⬇ Download Resume</a>
+      </div>
+      <div class="resume-frame">
+        <iframe src="assets/Yatin_Korat_Resume.pdf#toolbar=0&navpanes=0" width="100%" height="760px" style="display:block;border:none;border-radius:10px;"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work-samples">
+  <div class="section-inner">
+    <div class="section-tag reveal"><span class="tag-dot"></span> Portfolio</div>
+    <h2 class="reveal">Work Samples</h2>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div>
+          <h3>SmartRoomie – AI-Assisted Roommate Matching System</h3>
+          <p>A full-stack web application that simplifies the roommate search process using intelligent matching logic. Features RESTful APIs for user data management, secure authentication, and a scalable backend architecture built for real-world usage.</p>
+          <div class="tech-row">
+            <span class="tech-tag">Node.js</span><span class="tech-tag">Express</span>
+            <span class="tech-tag">MySQL</span><span class="tech-tag">REST APIs</span>
+            <span class="tech-tag">Authentication</span>
+          </div>
+        </div>
+        <span class="project-badge">Project 01</span>
+      </div>
+      <div class="project-card reveal">
+        <div>
+          <h3>SecurePass – Event Ticketing Platform</h3>
+          <p>A secure, full-stack ticketing platform supporting event booking, ticket resale, email verification, and transaction management — built with a strong focus on user security and system reliability.</p>
+          <div class="tech-row">
+            <span class="tech-tag">C#</span><span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Authentication</span><span class="tech-tag">Email Verification</span>
+            <span class="tech-tag">Transactions</span>
+          </div>
+          <a href="https://github.com/yatinkorat/GBC_Ticketing_Group_101" target="_blank" class="repo-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View Repository ↗
+          </a>
+        </div>
+        <span class="project-badge">Project 02</span>
+      </div>
+    </div>
+    <div class="github-bar reveal">
+      <div class="github-left">
+        <div class="github-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </div>
+        <div>
+          <div class="github-title">View My GitHub Profile</div>
+          <div class="github-sub">Source code, projects &amp; contributions</div>
+        </div>
+      </div>
+      <a href="https://github.com/yatinkorat" target="_blank" class="github-btn">Visit GitHub ↗</a>
+    </div>
+
+    <div style="margin-top:3.5rem;">
+      <div class="section-tag reveal" style="margin-bottom:1.4rem;"><span class="tag-dot"></span> Professional Experience</div>
+      <div class="exp-cards">
+        <div class="exp-card reveal">
+          <div class="exp-head">
+            <h3>Software Developer</h3>
+            <span class="exp-date">Nov 2022 – Oct 2023</span>
+          </div>
+          <div class="exp-co">InfoSoft Solutions · Surat, India</div>
+          <ul>
+            <li>Developed and maintained web applications using C#, JavaScript, and SQL</li>
+            <li>Designed and integrated RESTful APIs using Node.js for efficient data communication</li>
+            <li>Optimized SQL database queries, improving data retrieval efficiency and performance</li>
+            <li>Collaborated in an Agile development team to deliver features on time</li>
+            <li>Participated in code reviews and implemented secure coding practices</li>
+          </ul>
+        </div>
+        <div class="exp-card reveal">
+          <div class="exp-head">
+            <h3>Community Technology Volunteer</h3>
+            <span class="exp-date">May 2025 – Aug 2025</span>
+          </div>
+          <div class="exp-co">Community Volunteer · Toronto, ON</div>
+          <ul>
+            <li>Assisted community members with troubleshooting software and digital tools</li>
+            <li>Provided technical guidance on system navigation and account setup</li>
+            <li>Communicated complex technical concepts clearly to non-technical users</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="education">
+  <div class="section-inner">
+    <div class="section-tag reveal"><span class="tag-dot"></span> Credentials &amp; Documents</div>
+    <h2 class="reveal">Education &amp; Acknowledgements</h2>
+    <div class="edu-timeline">
+      <div class="edu-item reveal">
+        <div class="edu-node"></div>
+        <div class="edu-card">
+          <h3>Computer Programming and Analysis, Diploma</h3>
+          <div class="edu-school">George Brown College · Toronto, ON</div>
+          <div class="edu-years">September 2024 – April 2027 (Expected)</div>
+          <ul>
+            <li>Developed full-stack web applications using HTML, CSS, JavaScript, Node.js, and Express</li>
+            <li>Designed and implemented relational databases using MySQL and PostgreSQL</li>
+            <li>Collaborated in team-based Agile projects for system design, development, testing, and deployment</li>
+            <li>Built secure applications using authentication, REST APIs, and database integration</li>
+            <li>Applied debugging and problem-solving to improve application performance</li>
+          </ul>
+        </div>
+      </div>
+      <div class="edu-item reveal">
+        <div class="edu-node"></div>
+        <div class="edu-card">
+          <h3>Information Technology, Diploma</h3>
+          <div class="edu-school">Government Polytechnic Rajkot · India</div>
+          <div class="edu-years">September 2019 – September 2022</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="awards-section reveal">
+      <div class="section-tag" style="margin-bottom:1.4rem;"><span class="tag-dot"></span> Academic Awards</div>
+      <div class="awards-grid">
+        <div class="award-card">
+          <div class="award-top">
+            <div class="award-icon">🏆</div>
+            <div class="award-badge">Fall 2024</div>
+          </div>
+          <div class="award-title">Dean's Honour List</div>
+          <div class="award-school">George Brown College · Centre for Arts, Design and Information Technology</div>
+          <div class="award-desc">Awarded for achieving a Term GPA of 3.5 or higher. Signed by Ana Rita Morais, Dean.</div>
+          <a href="assets/Dean_letter_Sem1.pdf" target="_blank" class="award-link">View Letter ↗</a>
+        </div>
+        <div class="award-card">
+          <div class="award-top">
+            <div class="award-icon">🏆</div>
+            <div class="award-badge">Winter 2025</div>
+          </div>
+          <div class="award-title">Dean's Honour List</div>
+          <div class="award-school">George Brown College · Centre for Arts, Design and Information Technology</div>
+          <div class="award-desc">Awarded for achieving a Term GPA of 3.5 or higher. Signed by Ana Rita Morais, Dean.</div>
+          <a href="assets/Dean_letter_Sem2.pdf" target="_blank" class="award-link">View Letter ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="transcript-wrap reveal">
+      <div class="transcript-header">
+        <div class="transcript-title">📋 Academic Transcript</div>
+        <span class="transcript-note">George Brown College · Unofficial Transcript</span>
+      </div>
+
+      <div class="semester-block">
+        <div class="semester-head">
+          <div class="semester-name">Semester 1 · Fall 2024</div>
+          <div class="semester-meta">
+            <span class="semester-gpa">GPA: 3.96</span>
+            <span class="semester-status">✓ COMPLETE</span>
+          </div>
+        </div>
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+          <table class="transcript-table" style="min-width:400px;">
+            <thead><tr><th>Course</th><th>Title</th><th>Grade</th><th>Credits</th></tr></thead>
+            <tbody>
+              <tr><td><span class="course-code">COMP 1151</span></td><td>IT Essentials</td><td><span class="grade-badge grade-a">A+</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">COMP 1234</span></td><td>Introduction to Web Development</td><td><span class="grade-badge grade-a">A</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">COMP 1236</span></td><td>Fundamentals of Computing Logic</td><td><span class="grade-badge grade-a">A</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">COMP 1238</span></td><td>Introduction to Data Management</td><td><span class="grade-badge grade-a">A+</span></td><td>3</td></tr>
+              <tr><td><span class="course-code">MATH 1162</span></td><td>Math for Computer Technology I</td><td><span class="grade-badge grade-a">A+</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">COMM 1000</span></td><td>Intro to College Communication</td><td><span class="grade-badge grade-p">P</span></td><td>0</td></tr>
+              <tr><td><span class="course-code">COMM 2000</span></td><td>Communicating Across Contexts</td><td><span class="grade-badge grade-a">A-</span></td><td>3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="semester-head">
+          <div class="semester-name">Semester 2 · Winter 2025</div>
+          <div class="semester-meta">
+            <span class="semester-gpa">GPA: 3.71</span>
+            <span class="semester-status">✓ COMPLETE</span>
+          </div>
+        </div>
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+          <table class="transcript-table" style="min-width:400px;">
+            <thead><tr><th>Course</th><th>Title</th><th>Grade</th><th>Credits</th></tr></thead>
+            <tbody>
+              <tr><td><span class="course-code">COMP 1168</span></td><td>Database Management</td><td><span class="grade-badge grade-a">A-</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">COMP 1202</span></td><td>Object Oriented Programming</td><td><span class="grade-badge grade-a">A-</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">COMP 1235</span></td><td>Intro to Full-Stack Development</td><td><span class="grade-badge grade-b">B+</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">COMP 3044</span></td><td>Linux Essentials</td><td><span class="grade-badge grade-a">A+</span></td><td>3</td></tr>
+              <tr><td><span class="course-code">MATH 1172</span></td><td>Math for Computer Technology II</td><td><span class="grade-badge grade-a">A-</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">GSSC 1027</span></td><td>Personal Finance</td><td><span class="grade-badge grade-a">A+</span></td><td>3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="semester-block">
+        <div class="semester-head">
+          <div class="semester-name">Semester 3 · Fall 2025</div>
+          <div class="semester-meta">
+            <span class="semester-gpa">GPA: 3.31</span>
+            <span class="semester-status">✓ COMPLETE</span>
+          </div>
+        </div>
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+          <table class="transcript-table" style="min-width:400px;">
+            <thead><tr><th>Course</th><th>Title</th><th>Grade</th><th>Credits</th></tr></thead>
+            <tbody>
+              <tr><td><span class="course-code">COMP 1230</span></td><td>Advanced Web Programming</td><td><span class="grade-badge grade-a">A</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">COMP 2136</span></td><td>Software Quality Assurance</td><td><span class="grade-badge grade-c">C+</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">COMP 2130</span></td><td>Application Development Using Java</td><td><span class="grade-badge grade-a">A-</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">COMP 2139</span></td><td>Web Application Development</td><td><span class="grade-badge grade-a">A-</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">COMP 2147</span></td><td>Systems Analysis, Design and Testing</td><td><span class="grade-badge grade-b">B+</span></td><td>4</td></tr>
+              <tr><td><span class="course-code">GSCI 1007</span></td><td>History of Technology</td><td><span class="grade-badge grade-b">B-</span></td><td>3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    <div class="certs-section reveal" style="margin-top:2.5rem;">
+      <div class="section-tag" style="margin-bottom:1.4rem;"><span class="tag-dot"></span> Certificates &amp; Diplomas</div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-icon">🎓</div>
+          <div class="cert-body">
+            <div class="cert-title">Information Technology, Diploma (3-Year)</div>
+            <div class="cert-school">Government Polytechnic Rajkot · India</div>
+            <div class="cert-year">September 2019 – September 2022</div>
+            <div class="cert-gpa">CGPA: 9.41 / 10</div>
+            <span class="cert-badge completed">✓ Completed</span>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📘</div>
+          <div class="cert-body">
+            <div class="cert-title">Computer Programming &amp; Analysis, Advanced Diploma</div>
+            <div class="cert-school">George Brown College · Toronto, ON</div>
+            <div class="cert-year">September 2024 – April 2027 (Expected)</div>
+            <span class="cert-badge inprogress">⏳ In Progress</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="footer-logo">YK</div>
+  <div class="footer-name">Yatin Korat</div>
+  <div class="footer-sub">
+    Software Developer &amp; Computer Programming &amp; Analysis Student<br>
+    📍 North York, Ontario &nbsp;·&nbsp; ✉️ yatin.korat@georgebrown.ca &nbsp;·&nbsp; 📞 (289) 890-2804
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-copy">© 2026 Yatin Korat · George Brown College · Computer Programming &amp; Analysis</div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 70);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => obs.observe(el));
+
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+</body>
+</html>
