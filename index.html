@@ -262,30 +262,38 @@ footer{background:var(--dark);color:#475569;padding:3.5rem 4rem;text-align:cente
 .awards-section{margin-bottom:3rem;}
 .awards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;}
 .award-card{
-  background:linear-gradient(135deg,#fffbeb,#fef3c7);
-  border:1.5px solid #fde68a;border-radius:18px;padding:1.8rem 2rem;
+  background:linear-gradient(135deg,var(--blue-light),var(--purple-light));
+  border:1.5px solid var(--blue-border);border-radius:18px;padding:1.8rem 2rem;
   transition:all 0.3s;position:relative;overflow:hidden;
 }
 .award-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,#f59e0b,#d97706);
+  background:linear-gradient(90deg,var(--blue),var(--purple));
 }
-.award-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(245,158,11,0.2);}
+.award-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(37,99,235,0.15);}
 .award-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
 .award-icon{font-size:2rem;}
-.award-badge{background:#f59e0b;color:white;font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:20px;}
-.award-title{font-size:1.1rem;font-weight:800;color:#92400e;margin-bottom:0.4rem;}
-.award-school{font-size:0.78rem;color:#a16207;font-weight:600;margin-bottom:0.6rem;line-height:1.5;}
-.award-desc{font-size:0.83rem;color:#78350f;line-height:1.7;margin-bottom:1.2rem;}
+.award-badge{background:linear-gradient(135deg,var(--blue),var(--purple));color:white;font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:20px;}
+.award-title{font-size:1.1rem;font-weight:800;color:var(--dark);margin-bottom:0.4rem;}
+.award-school{font-size:0.78rem;color:var(--blue);font-weight:600;margin-bottom:0.6rem;line-height:1.5;}
+.award-desc{font-size:0.83rem;color:var(--body);line-height:1.7;margin-bottom:1.2rem;}
 .award-link{
   display:inline-flex;align-items:center;gap:6px;
-  background:#f59e0b;color:white;font-size:0.78rem;font-weight:700;
+  background:linear-gradient(135deg,var(--blue),var(--purple));color:white;font-size:0.78rem;font-weight:700;
   padding:7px 16px;border-radius:9px;text-decoration:none;
-  transition:all 0.2s;box-shadow:0 3px 10px rgba(245,158,11,0.3);
+  transition:all 0.2s;box-shadow:0 3px 10px rgba(37,99,235,0.25);
 }
-.award-link:hover{background:#d97706;transform:translateY(-1px);}
+.award-link:hover{opacity:0.88;transform:translateY(-1px);}
 .repo-link{display:inline-flex;align-items:center;gap:7px;margin-top:1rem;background:var(--dark);color:white;font-size:0.78rem;font-weight:600;padding:8px 16px;border-radius:9px;text-decoration:none;transition:all 0.2s;box-shadow:0 3px 10px rgba(0,0,0,0.15);}
-.repo-link:hover{opacity:0.85;transform:translateY(-1px);}</style>
+.repo-link:hover{opacity:0.85;transform:translateY(-1px);}
+.resume-mobile-btns{display:none;padding:1.2rem 1.6rem;gap:1rem;background:var(--bg);border-top:1px solid var(--border);}
+.resume-mob-btn{flex:1;text-align:center;padding:12px;border-radius:12px;font-size:0.88rem;font-weight:600;text-decoration:none;background:linear-gradient(135deg,var(--blue),var(--purple));color:white;box-shadow:0 4px 12px rgba(37,99,235,0.25);}
+.resume-mob-btn.secondary{background:white;color:var(--dark);border:1.5px solid var(--border);box-shadow:none;}
+@media(max-width:640px){
+  .resume-frame{display:none !important;}
+  .resume-mobile-btns{display:flex !important;}
+}
+</style>
 </head>
 <body>
 
@@ -325,7 +333,7 @@ footer{background:var(--dark);color:#475569;padding:3.5rem 4rem;text-align:cente
       </div>
       <div class="hero-btns">
         <a href="#work-samples" class="btn-primary">View My Work ↓</a>
-        <a href="assets/Yatin_Korat_Resume.pdf" target="_blank" class="btn-ghost">Download Resume ↗</a>
+        <a href="assets/Yatin_Resume.pdf" target="_blank" class="btn-ghost">Download Resume ↗</a>
       </div>
     </div>
     <div class="hero-right">
@@ -381,20 +389,18 @@ footer{background:var(--dark);color:#475569;padding:3.5rem 4rem;text-align:cente
         <div class="resume-light-left">
           <div class="resume-light-icon">📄</div>
           <div>
-            <div class="resume-light-name">Yatin_Korat_Resume.pdf</div>
+            <div class="resume-light-name">Yatin_Resume.pdf</div>
             <div class="resume-light-sub">Computer Programming &amp; Analysis · George Brown College</div>
           </div>
         </div>
-        <a class="resume-dl-btn" href="assets/Yatin_Korat_Resume.pdf" download>⬇ Download PDF</a>
-      </div>
-      <div class="resume-mobile-msg" style="display:none;padding:2rem;text-align:center;background:var(--bg);border-top:1px solid var(--border);">
-        <div style="font-size:2.5rem;margin-bottom:1rem;">📄</div>
-        <div style="font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:0.5rem;">Resume not available on mobile</div>
-        <div style="font-size:0.83rem;color:var(--muted);margin-bottom:1.4rem;line-height:1.6;">Tap the button below to download and view your resume</div>
-        <a href="assets/Yatin_Korat_Resume.pdf" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#2563eb,#7c3aed);color:white;font-size:0.88rem;font-weight:600;padding:12px 28px;border-radius:12px;text-decoration:none;">⬇ Download Resume</a>
+        <a class="resume-dl-btn" href="assets/Yatin_Resume.pdf" download>⬇ Download PDF</a>
       </div>
       <div class="resume-frame">
-        <iframe src="assets/Yatin_Korat_Resume.pdf#toolbar=0&navpanes=0" width="100%" height="760px" style="display:block;border:none;border-radius:10px;"></iframe>
+        <iframe src="https://docs.google.com/viewer?url=https://yatinkorat.github.io/portfolio/assets/Yatin_Resume.pdf&embedded=true" width="100%" height="760px" style="display:block;border:none;border-radius:10px;"></iframe>
+      </div>
+      <div class="resume-mobile-btns">
+        <a href="assets/Yatin_Resume.pdf" target="_blank" class="resume-mob-btn">👁 View Resume</a>
+        <a href="assets/Yatin_Resume.pdf" download class="resume-mob-btn secondary">⬇ Download</a>
       </div>
     </div>
   </div>
@@ -414,6 +420,10 @@ footer{background:var(--dark);color:#475569;padding:3.5rem 4rem;text-align:cente
             <span class="tech-tag">MySQL</span><span class="tech-tag">REST APIs</span>
             <span class="tech-tag">Authentication</span>
           </div>
+          <a href="https://github.com/yatinkorat/SmartRoomie-AI-Assisted-Roommate-Matching-System" target="_blank" class="repo-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            View Repository ↗
+          </a>
         </div>
         <span class="project-badge">Project 01</span>
       </div>
@@ -464,18 +474,7 @@ footer{background:var(--dark);color:#475569;padding:3.5rem 4rem;text-align:cente
             <li>Participated in code reviews and implemented secure coding practices</li>
           </ul>
         </div>
-        <div class="exp-card reveal">
-          <div class="exp-head">
-            <h3>Community Technology Volunteer</h3>
-            <span class="exp-date">May 2025 – Aug 2025</span>
-          </div>
-          <div class="exp-co">Community Volunteer · Toronto, ON</div>
-          <ul>
-            <li>Assisted community members with troubleshooting software and digital tools</li>
-            <li>Provided technical guidance on system navigation and account setup</li>
-            <li>Communicated complex technical concepts clearly to non-technical users</li>
-          </ul>
-        </div>
+
       </div>
     </div>
   </div>
@@ -539,81 +538,26 @@ footer{background:var(--dark);color:#475569;padding:3.5rem 4rem;text-align:cente
     </div>
 
     <div class="transcript-wrap reveal">
-      <div class="transcript-header">
-        <div class="transcript-title">📋 Academic Transcript</div>
-        <span class="transcript-note">George Brown College · Unofficial Transcript</span>
-      </div>
-
-      <div class="semester-block">
-        <div class="semester-head">
-          <div class="semester-name">Semester 1 · Fall 2024</div>
-          <div class="semester-meta">
-            <span class="semester-gpa">GPA: 3.96</span>
-            <span class="semester-status">✓ COMPLETE</span>
+      <div class="resume-light">
+        <div class="resume-light-bar">
+          <div class="resume-light-left">
+            <div class="resume-light-icon">📋</div>
+            <div>
+              <div class="resume-light-name">Academic Transcript — George Brown College</div>
+              <div class="resume-light-sub">Computer Programming &amp; Analysis · Unofficial · Overall GPA: 3.65</div>
+            </div>
           </div>
+          <a class="resume-dl-btn" href="assets/Transcript.pdf" download>⬇ Download PDF</a>
         </div>
-        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-          <table class="transcript-table" style="min-width:400px;">
-            <thead><tr><th>Course</th><th>Title</th><th>Grade</th><th>Credits</th></tr></thead>
-            <tbody>
-              <tr><td><span class="course-code">COMP 1151</span></td><td>IT Essentials</td><td><span class="grade-badge grade-a">A+</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">COMP 1234</span></td><td>Introduction to Web Development</td><td><span class="grade-badge grade-a">A</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">COMP 1236</span></td><td>Fundamentals of Computing Logic</td><td><span class="grade-badge grade-a">A</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">COMP 1238</span></td><td>Introduction to Data Management</td><td><span class="grade-badge grade-a">A+</span></td><td>3</td></tr>
-              <tr><td><span class="course-code">MATH 1162</span></td><td>Math for Computer Technology I</td><td><span class="grade-badge grade-a">A+</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">COMM 1000</span></td><td>Intro to College Communication</td><td><span class="grade-badge grade-p">P</span></td><td>0</td></tr>
-              <tr><td><span class="course-code">COMM 2000</span></td><td>Communicating Across Contexts</td><td><span class="grade-badge grade-a">A-</span></td><td>3</td></tr>
-            </tbody>
-          </table>
+        <div class="resume-frame">
+          <iframe src="assets/Transcript.pdf" width="100%" height="760px" style="display:block;border:none;border-radius:10px;"></iframe>
+        </div>
+        <div class="resume-mobile-btns">
+          <a href="assets/Transcript.pdf" target="_blank" class="resume-mob-btn">👁 View Transcript</a>
+          <a href="assets/Transcript.pdf" download class="resume-mob-btn secondary">⬇ Download</a>
         </div>
       </div>
-
-      <div class="semester-block">
-        <div class="semester-head">
-          <div class="semester-name">Semester 2 · Winter 2025</div>
-          <div class="semester-meta">
-            <span class="semester-gpa">GPA: 3.71</span>
-            <span class="semester-status">✓ COMPLETE</span>
-          </div>
-        </div>
-        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-          <table class="transcript-table" style="min-width:400px;">
-            <thead><tr><th>Course</th><th>Title</th><th>Grade</th><th>Credits</th></tr></thead>
-            <tbody>
-              <tr><td><span class="course-code">COMP 1168</span></td><td>Database Management</td><td><span class="grade-badge grade-a">A-</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">COMP 1202</span></td><td>Object Oriented Programming</td><td><span class="grade-badge grade-a">A-</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">COMP 1235</span></td><td>Intro to Full-Stack Development</td><td><span class="grade-badge grade-b">B+</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">COMP 3044</span></td><td>Linux Essentials</td><td><span class="grade-badge grade-a">A+</span></td><td>3</td></tr>
-              <tr><td><span class="course-code">MATH 1172</span></td><td>Math for Computer Technology II</td><td><span class="grade-badge grade-a">A-</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">GSSC 1027</span></td><td>Personal Finance</td><td><span class="grade-badge grade-a">A+</span></td><td>3</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="semester-block">
-        <div class="semester-head">
-          <div class="semester-name">Semester 3 · Fall 2025</div>
-          <div class="semester-meta">
-            <span class="semester-gpa">GPA: 3.31</span>
-            <span class="semester-status">✓ COMPLETE</span>
-          </div>
-        </div>
-        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-          <table class="transcript-table" style="min-width:400px;">
-            <thead><tr><th>Course</th><th>Title</th><th>Grade</th><th>Credits</th></tr></thead>
-            <tbody>
-              <tr><td><span class="course-code">COMP 1230</span></td><td>Advanced Web Programming</td><td><span class="grade-badge grade-a">A</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">COMP 2136</span></td><td>Software Quality Assurance</td><td><span class="grade-badge grade-c">C+</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">COMP 2130</span></td><td>Application Development Using Java</td><td><span class="grade-badge grade-a">A-</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">COMP 2139</span></td><td>Web Application Development</td><td><span class="grade-badge grade-a">A-</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">COMP 2147</span></td><td>Systems Analysis, Design and Testing</td><td><span class="grade-badge grade-b">B+</span></td><td>4</td></tr>
-              <tr><td><span class="course-code">GSCI 1007</span></td><td>History of Technology</td><td><span class="grade-badge grade-b">B-</span></td><td>3</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
+    </div>
     <div class="certs-section reveal" style="margin-top:2.5rem;">
       <div class="section-tag" style="margin-bottom:1.4rem;"><span class="tag-dot"></span> Certificates &amp; Diplomas</div>
       <div class="cert-grid">
@@ -653,7 +597,7 @@ footer{background:var(--dark);color:#475569;padding:3.5rem 4rem;text-align:cente
   <div class="footer-copy">© 2026 Yatin Korat · George Brown College · Computer Programming &amp; Analysis</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const reveals = document.querySelectorAll('.reveal');
 const obs = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
